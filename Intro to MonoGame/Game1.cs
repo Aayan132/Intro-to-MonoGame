@@ -11,8 +11,11 @@ namespace Intro_to_MonoGame
 
         Rectangle window;
 
-        Texture2D dinotexture;
-        Texture2D monstertexture;
+        Texture2D Moontexture;
+        Texture2D Werewolftexture;
+        Texture2D NightSkytexture;
+        Texture2D UFOtexture;
+        //Texture2D Mountaintexture;
 
         public Game1()
         {
@@ -31,7 +34,7 @@ namespace Intro_to_MonoGame
             _graphics.PreferredBackBufferHeight = window.Height;
             _graphics.ApplyChanges();
 
-            this.Window.Title = "AAAAAAAADDDDDIIIIINGGGGG CCCCOOOONNNTTTTENNNTTTT";
+            this.Window.Title = "Assignment 1";
 
             base.Initialize();
         }
@@ -42,8 +45,12 @@ namespace Intro_to_MonoGame
 
             // TODO: use this.Content to load your game content here
 
-            dinotexture = Content.Load<Texture2D>("dino");
-            monstertexture = Content.Load<Texture2D>("Monster");
+            Moontexture = Content.Load<Texture2D>("Moon");
+            Werewolftexture = Content.Load<Texture2D>("Werewolf");
+            NightSkytexture = Content.Load<Texture2D>("Night Sky");
+            UFOtexture = Content.Load<Texture2D>("UFO2");
+            //Mountaintexture = Content.Load<Texture2D>("Mountain");
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -63,11 +70,17 @@ namespace Intro_to_MonoGame
             // TODO: Add your drawing code here
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(dinotexture, new Vector2(500, 250), Color.Black);
-            _spriteBatch.Draw(dinotexture, new Vector2(600, 300), Color.Black);
-            _spriteBatch.Draw(dinotexture, new Vector2(10, 10), Color.White);
-            _spriteBatch.Draw(monstertexture, new Vector2(200, 200), Color.Red);
-
+            _spriteBatch.Draw(NightSkytexture, window, Color.White);
+            //_spriteBatch.Draw(Mountaintexture, new Vector2(500, 500), Color.White);
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 5; col++) 
+                {
+                    _spriteBatch.Draw(UFOtexture, new Vector2(1 + col * 20, 0 + row * 20), Color.White);
+                }
+            }
+            _spriteBatch.Draw(Moontexture, new Vector2(185, 50), Color.White);
+            _spriteBatch.Draw(Werewolftexture, new Vector2(240, 150), Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);
